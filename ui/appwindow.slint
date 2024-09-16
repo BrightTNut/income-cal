@@ -1,0 +1,86 @@
+import { Button, VerticalBox, LineEdit } from "std-widgets.slint";
+
+// component CalculateButton{
+  
+// }
+
+export component AppWindow inherits Window {
+
+    in property <string> results : "";
+    in-out property <bool> opencurtan;
+    callback divide-income(string);
+    background: #313e50;
+     GridLayout{
+
+        padding: 50px;
+        spacing: 25px;
+        Row{
+            Text {
+                text:"Enter Total Your Income";
+                horizontal-alignment:center;
+                font-size:25px;
+                font-weight: 900;
+                color:orange;
+            }
+        }
+        Row{
+            income := LineEdit{
+                horizontal-alignment:center;
+                font-size: 15px;
+                placeholder-text: "Enter Income Here";
+                height: 35px;
+            }
+        }
+
+        Row{
+            Button{
+                primary:true;
+                text: "Calculate";
+                 height: 35px;
+                 clicked => {
+                    root.opencurtan = !root.opencurtan;
+                    divide-income(income.text)}
+            }
+        }
+
+        Row{
+            Rectangle {
+                height: 100px;
+                background: #f2f2f2;
+                Text {
+                    color: black;
+                    font-size: 20px;
+                    font-weight: 500;
+                    text: root.results;
+                }
+
+                //Left Recangle
+                Rectangle {
+                    background: #333333;
+                    x:0;
+                    width: opencurtan ? 0px : parent.width / 2;
+                    height: parent.height;
+                    animate width {
+                         duration: 300ms;easing: ease-out-bounce;
+                    }
+                }
+                //Right Recangle
+                Rectangle {
+                    background: #333333;
+                    x: opencurtan ? parent.width:parent.width / 2;
+                    width: opencurtan ? 0px : parent.width/2;
+                    height: parent.height;
+                    animate width {
+                        duration: 300ms;easing: ease-in;
+                         
+                    }
+                    animate x {
+                        duration: 300ms;easing: ease-in;
+                         
+                    }
+                }
+
+            }
+        }
+     }
+}
