@@ -1,6 +1,7 @@
 # Slint Rust Template
 
-A template for a Rust application that's using [Slint](https://slint.rs/) for the user interface.
+A templat![Screenshot 2024-09-21 160800](https://github.com/user-attachments/assets/2730257f-e662-412a-b9b8-4bc0b791e7e7)
+e for a Rust application that's using [Slint](https://slint.rs/) for the user interface.
 
 ## About
 
